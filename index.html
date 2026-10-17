@@ -90,6 +90,8 @@
             z-index: -1;
             pointer-events: none;
         }
+
+
         .iti {
     width: 100%;
 }
@@ -99,20 +101,42 @@
 }
 
 .iti__country-list {
-    width: 100%;
-    max-width: 420px;
-    max-height: 280px;
+    width: 300px !important;
+    max-width: 300px !important;
+    max-height: 260px !important;
     overflow-y: auto;
-    font-size: 15px;
+    background: #0f172a !important;
+    border: 1px solid #38bdf8 !important;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-size: 14px;
+}
+
+.iti__country {
+    padding: 8px 10px;
+    color: #ffffff !important;
+}
+
+.iti__country:hover {
+    background: #1e293b !important;
 }
 
 .iti__search-input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 15px;
+    width: calc(100% - 12px) !important;
+    margin: 6px !important;
+    padding: 8px 10px !important;
+    box-sizing: border-box !important;
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #38bdf8 !important;
+    border-radius: 6px !important;
+    outline: none;
 }
 
+.iti__search-input::placeholder {
+    color: #94a3b8 !important;
+}
+        
         /* --- AMBIENT NEON GLOW ORBS --- */
         .ambient-glow {
             position: fixed;
