@@ -20,6 +20,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.3/build/css/intlTelInput.css">
+
     <style>
         :root {
             /* DAY LIGHT MODE (Whitish, pristine, ultra-clean) */
@@ -653,7 +656,7 @@
         <form id="contactForm" action="#" method="POST" class="glass-panel form-details">
             <input class="form-input" type="text" id="name" name="name" placeholder="Your Full Name" required>
             <input class="form-input" type="email" id="email" name="email" placeholder="Your Email Address" required>
-            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+91 9876543210" inputmode="tel" pattern="\+?[0-9 ]{7,15}" required>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="Phone Number" required>
             <textarea class="form-input text-area" id="message" name="message" maxlength="5000" placeholder="Type your message or inquiry here..." required></textarea>
 
             <div class="msgbtn-div" style="margin-top: 10px;">
@@ -940,6 +943,14 @@ const modalCloseBtn = document.getElementById("modalCloseBtn");
 const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbyC7zFv3pAp_VYy8vsP91vpgWC8ORsYEic7Otqi-j24ZiA-ycqVxvVzyKphounzJxYW/exec";
 
+        
+const phoneInput = document.getElementById("phone");
+
+const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "in",
+    separateDialCode: true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.3/build/js/utils.js"
+});
 
 function openSuccessModal() {
     if (quantumModal) {
@@ -991,7 +1002,7 @@ if (contactForm) {
 
         formData.append("name", name);
         formData.append("email", email);
-        formData.append("phone", document.getElementById("phone").value.trim());
+        formData.append("phone", iti.getNumber());
         formData.append("message", message);
 
 
@@ -1117,5 +1128,6 @@ if (contactForm) {
         }
     });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.3/build/js/intlTelInput.min.js"></script>
 </body>
 </html>
