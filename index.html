@@ -1054,10 +1054,10 @@ if (contactForm) {
 
         formData.append("name", name);
         formData.append("email", email);
-        const phone = window.iti.getSelectedCountryData().dialCode + document.getElementById("phone").value;
+        const phone = window.iti.getSelectedCountryData().dialCode + document.getElementById("phone").value.trim();
         formData.append("phone", phone);
         formData.append("message", message);
-        console.log("PHONE:", window.iti.getSelectedCountryData().dialCode + document.getElementById("phone").value);
+    
 
         try {
 
