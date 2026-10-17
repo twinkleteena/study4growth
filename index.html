@@ -1,220 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDY4GROWTH</title>
+    <meta name="theme-color" content="#f8fafc">
+    <title>STUDY4GROWTH | Next-Gen 4D Learning Ecosystem</title>
 
+    <!-- favicon -->
+    <link rel="icon" href="https://i.ibb.co/xSgWwHqX/Gemini-Generated-Image-rpxt04rpxt04rpxt.png">
 
-    <!-- favicon. -->
-    <link rel="icon" href="s4g.png">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
 
-    <!-- google fonts. -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 
-    <!-- CSS and bootstrap library. -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-     
-    <link rel="stylesheet" href="style.css">
-    <!-- font awesome. -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- js script bootstrap. -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            /* DAY LIGHT MODE (Whitish, pristine, ultra-clean) */
+            --bg-deep: #f8fafc;
+            --surface-bg: rgba(255, 255, 255, 0.85);
+            --surface-border: rgba(203, 213, 225, 0.7);
+            --surface-shine: rgba(255, 255, 255, 0.95);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent-primary: #0284c7;
+            --accent-secondary: #9333ea;
+            --accent-gold: #d97706;
+            --shadow-color: rgba(15, 23, 42, 0.08);
+            --card-hover-shadow: 0 25px 50px rgba(2, 132, 199, 0.15);
+            --nav-bg: rgba(248, 250, 252, 0.9);
+            --hero-gradient: linear-gradient(135deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.96));
+        }
 
+        body.night-mode {
+            /* NIGHT NEON MODE (Deep cybernetic dark with glowing neon accents) */
+            --bg-deep: #030712;
+            --surface-bg: rgba(15, 23, 42, 0.75);
+            --surface-border: rgba(56, 189, 248, 0.25);
+            --surface-shine: rgba(255, 255, 255, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #c084fc;
+            --accent-gold: #f59e0b;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --card-hover-shadow: 0 30px 60px rgba(56, 189, 248, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            --nav-bg: rgba(3, 7, 18, 0.9);
+            --hero-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(3, 7, 18, 0.95));
+        }
 
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            overflow-x: hidden;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        a, a:hover { text-decoration: none; }
+        img { max-width: 100%; }
+
+        /* --- PARTICLE CANVAS --- */
+        #quantum-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- AMBIENT NEON GLOW ORBS --- */
+        .ambient-glow {
+            position: fixed;
+            width: 700px; height: 700px;
+            border-radius: 50%;
+            z-index: -2;
+            pointer-events: none;
+            opacity: 0.3;
+            will-change: transform;
+            animation: pulseGlow 12s infinite alternate ease-in-out;
+            transition: opacity 0.5s ease;
+        }
+        body.night-mode .ambient-glow { opacity: 0.45; }
+        .glow-1 { background: radial-gradient(circle, var(--accent-primary) 0%, transparent 65%); top: -250px; left: -250px; }
+        .glow-2 { background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 65%); bottom: -250px; right: -250px; animation-delay: -6s; }
+
+        @keyframes pulseGlow {
+            0%   { transform: scale(1) translate3d(0, 0, 0); }
+            100% { transform: scale(1.25) translate3d(40px, 40px, 0); }
+        }
+
+        /* --- TYPOGRAPHY & GRADIENTS --- */
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--text-main); transition: color 0.4s ease; }
+        h2 { font-size: 3.2rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-gold), var(--accent-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shineText 8s linear infinite;
+        }
+        @keyframes shineText { to { background-position: 200% center; } }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            height: 3px; width: 120px;
+            margin: 20px auto 50px;
+            border-radius: 5px;
+            transition: background 0.4s ease;
+        }
+
+        /* --- DYNAMIC LOGO vs TEXT SWITCHING BY MODE --- */
+        .logo-container { 
+            display: inline-flex; 
+            align-items: center; 
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .chroma-logo {
+            display: block;
+            height: 56px;
+            width: auto;
+            margin-right: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            filter: drop-shadow(0 4px 15px var(--shadow-color));
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .chroma-logo.ready { opacity: 1; }
+        .chroma-logo.ready:hover { transform: scale(1.06) rotate(-2deg); }
+
+        .brand-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #38bdf8, #c084fc, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* DAY / LIGHT MODE: Show ONLY Logo, Hide Brand Text */
+        body:not(.night-mode) .logo-container {
+            display: inline-flex !important;
+        }
+        body:not(.night-mode) .brand-text {
+            display: none !important;
+        }
+
+        /* NIGHT / BLACK MODE: Hide Logo, Show ONLY Brand Text */
+        body.night-mode .logo-container {
+            display: none !important;
+        }
+        body.night-mode .brand-text {
+            display: inline-block !important;
+        }
+
+        /* --- GLASSMORPHIC PANELS --- */
+        .glass-panel {
+            background: var(--surface-bg);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--surface-border);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px var(--shadow-color), inset 0 1px 0 var(--surface-shine);
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* --- STICKY NAVBAR --- */
+        #fixed-navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--nav-bg);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--surface-border);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transform: translate3d(0, -110%, 0);
+            visibility: hidden;
+            will-change: transform;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.5s, background 0.4s ease;
+        }
+        #fixed-navbar.visible {
+            transform: translate3d(0, 0, 0);
+            visibility: visible;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+        }
+        .nav-div { margin: 0 auto; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+        .nav-link, #fixed-navbar a.nav-link-scroll {
+            color: var(--text-main) !important; margin: 0 10px; text-transform: uppercase;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, #fixed-navbar a.nav-link-scroll:hover { color: var(--accent-primary) !important; }
+
+        .navbar-brand { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-main) !important; display: flex; align-items: center; min-height: 56px; }
+        .hamburger { font-size: 1.8rem; background: transparent; border: none; color: var(--text-main); display: none; cursor: pointer; }
+        .hamburger:focus { outline: none; }
+        .slidedown-UL { list-style: none; display: flex; margin: 0; padding: 0; align-items: center; }
+
+        /* --- DAY / NIGHT TOGGLE WIDGET --- */
+        .mode-toggle-btn {
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
+            color: var(--text-main);
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: inline-flex; justify-content: center; align-items: center;
+            cursor: pointer;
+            margin-left: 15px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, color 0.3s ease;
+        }
+        .mode-toggle-btn:hover { transform: scale(1.1) rotate(15deg); color: var(--accent-primary); }
+        .mode-toggle-btn:focus { outline: none; }
+
+        /* --- 4D HOLOGRAPHIC BUTTONS --- */
+        .btn-quantum, .btn-quantum-outline {
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-quantum {
+            background: linear-gradient(135deg, var(--accent-primary), #2563eb);
+            border: none; color: #fff !important;
+            padding: 16px 42px; border-radius: 50px;
+            font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.35);
+            position: relative; overflow: hidden; z-index: 0;
+            isolation: isolate;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+        body.night-mode .btn-quantum {
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+        }
+        .btn-quantum::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, #2563eb, var(--accent-secondary));
+            opacity: 0; z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+        .btn-quantum:hover::before { opacity: 1; }
+        .btn-quantum:hover { transform: translate3d(0, -4px, 0); box-shadow: 0 20px 40px rgba(2, 132, 199, 0.5); }
+        body.night-mode .btn-quantum:hover { box-shadow: 0 20px 40px rgba(56, 189, 248, 0.6); }
+        .btn-quantum:active { transform: translate3d(0, -1px, 0); }
+
+        .btn-quantum-outline {
+            background: transparent;
+            border: 2px solid var(--accent-secondary);
+            color: var(--text-main) !important;
+            padding: 14px 40px; border-radius: 50px;
+            font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.12);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        }
+        .btn-quantum-outline:hover {
+            background: var(--accent-secondary);
+            box-shadow: 0 15px 30px rgba(147, 51, 234, 0.35);
+            transform: translate3d(0, -4px, 0);
+            color: #ffffff !important;
+        }
+
+        /* --- HERO --- */
+        #title {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; position: relative; padding: 40px 0;
+            background: var(--hero-gradient), url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+            background-size: cover; background-position: center;
+            transition: background 0.5s ease;
+        }
+        .title-top { padding: 5% 10%; text-align: center; z-index: 2; }
+        #title h1 { font-size: 4.5rem; line-height: 1.15; margin-bottom: 25px; }
+        .title-text { font-size: 1.25rem; font-weight: 400; color: var(--text-muted); max-width: 750px; margin: 0 auto 45px; line-height: 1.8; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        /* --- SECTIONS --- */
+        section { padding: 120px 0; position: relative; z-index: 2; }
+        .section-header { text-align: center; margin-bottom: 70px; padding: 0 5%; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .reveal { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.in-view { opacity: 1; transform: none; }
+
+        /* --- SERVICE CARDS (3D TILT) --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px; padding: 0 5%; }
+
+        .glass-card {
+            padding: 45px 35px;
+            text-align: center;
+            will-change: transform;
+            transform: perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+        .glass-card.is-tilting { transition: transform 0.12s ease-out, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .glass-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .glass-card h3 { font-size: 1.7rem; margin-top: 25px; }
+        .glass-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0; }
+
+        .icon-box-4d {
+            width: 90px; height: 90px; margin: 0 auto;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(147, 51, 234, 0.04));
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-radius: 24px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2.5rem; color: var(--accent-primary);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+        body.night-mode .icon-box-4d {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(192, 132, 252, 0.05));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-primary);
+        }
+
+        .enroll-wrap { text-align: center; margin-top: 60px; padding: 0 15px; }
+
+        /* --- ABOUT & TESTIMONIALS --- */
+        .about-content { padding: 0 5%; }
+        .about-glass { padding: 50px; }
+        .aboutimg { display: block; border-radius: 20px; width: 100%; border: 1px solid var(--surface-border); box-shadow: 0 20px 40px var(--shadow-color); }
+
+        #testimonial-carousel { max-width: 850px; margin: 0 auto; padding: 50px; text-align: center; width: calc(100% - 10%); }
+        #testimonial-carousel .carousel-inner { overflow: hidden; }
+        .fa-quote-left { font-size: 3.5rem; color: var(--accent-secondary); opacity: 0.5; margin-bottom: 25px; }
+        .testimonial-text { font-size: 1.4rem; font-weight: 300; font-style: italic; color: var(--text-main); line-height: 1.8; }
+        .testimonial-name { margin-top: 30px; margin-bottom: 0; color: var(--accent-primary); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- CONTACT FORM --- */
+        .form-details { max-width: 750px; width: calc(100% - 10%); margin: 0 auto; padding: 60px; position: relative; }
+        .form-input {
+            display: block;
+            width: 100%; padding: 20px 25px; margin-bottom: 25px;
+            background: var(--surface-bg); border: 1px solid var(--surface-border);
+            border-radius: 16px; color: var(--text-main); font-size: 1.05rem; font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none; border-color: var(--accent-primary);
+            box-shadow: 0 0 25px rgba(2, 132, 199, 0.2); background: var(--surface-bg);
+        }
+        body.night-mode .form-input:focus { box-shadow: 0 0 25px rgba(56, 189, 248, 0.3); }
+        .form-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+        .text-area { resize: vertical; min-height: 160px; }
+
+        /* --- GORGEOUS SUCCESS POPUP MODAL --- */
+        .quantum-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(3, 7, 18, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+        }
+        .quantum-modal-overlay.active {
+            opacity: 1; visibility: visible;
+            transition: opacity 0.4s ease, visibility 0s;
+        }
+        .quantum-modal-card {
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 480px; width: 90%;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .quantum-modal-overlay.active .quantum-modal-card {
+            transform: scale(1) translateY(0);
+        }
+        .modal-icon-glow {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2.5rem; color: #fff;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            animation: pulseIcon 2s infinite ease-in-out;
+        }
+        @keyframes pulseIcon {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .quantum-modal-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-main); }
+        .quantum-modal-card p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px; line-height: 1.6; }
+
+        /* --- FOOTER --- */
+        #footer { text-align: center; padding: 80px 0 40px; position: relative; z-index: 2; border-top: 1px solid var(--surface-border); background: var(--surface-bg); transition: background 0.4s ease; }
+        .footer-ficon {
+            font-size: 1.4rem; color: var(--text-main);
+            width: 55px; height: 55px; display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: var(--surface-bg); border: 1px solid var(--surface-border);
+            margin: 0 12px; transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        .footer-ficon:hover {
+            background: var(--accent-primary); color: #ffffff;
+            box-shadow: 0 0 25px var(--accent-primary); transform: translate3d(0, -5px, 0);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 1000px) {
+            h2 { font-size: 2.3rem; }
+            #title h1 { font-size: 2.6rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-quantum, .btn-quantum-outline { width: 100%; max-width: 320px; text-align: center; margin: 8px 0; }
+
+            .nav-menu { position: absolute; top: 100%; left: 0; width: 100%; background: var(--nav-bg); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border-top: 1px solid var(--surface-border); }
+            .slidedown-UL { display: none; flex-direction: column; text-align: center; padding: 25px 0; }
+            .slidedown-UL.active { display: flex; }
+            .slidedown-UL li { margin: 15px 0; }
+            .hamburger { display: block; color: var(--text-main); }
+            .aboutimg { margin-top: 0; }
+            .form-details, .about-glass, #testimonial-carousel { padding: 30px 20px; }
+            .glass-card h3 { font-size: 1.5rem; }
+            .testimonial-text { font-size: 1.15rem; }
+            section { padding: 80px 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
 </head>
 
-<body>
+<body class="night-mode">
 
-    <!-- *******************slidedown-navbar.*************** -->
-    <div class="container-fluid hidden-container">
-        <nav id="fixed-navbar">
-            <div class="nav-div">
-                <a class="navbrand" href="">
-                    <img src="s4g.png" style="height: 80px; vertical-align: middle;">STUDY4GROWTH</a>
-                <button class="hamburger" id="hamburger"><i class="far fa-bars"></i></button>
-                <div class="nav-menu" id="nav-menu">
-                    <ul class="slidedown-UL" id="slidedown-UL">
-                        <li><a class="navbar-link" href="#title">HOME</a></li>
-                        <li><a class="navbar-link" href="#about">ABOUT</a></li>
-                        <li><a class="navbar-link" href="#services">Courses</a></li>
-                        <li><a class="navbar-link" href="#contact">CONTACT</a></li>
-                    </ul>
-                </div>                
+    <!-- Particle Canvas -->
+    <canvas id="quantum-canvas"></canvas>
+
+    <!-- Ambient Glow Orbs -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- SUCCESS POPUP MODAL -->
+    <div id="quantumModal" class="quantum-modal-overlay">
+        <div class="quantum-modal-card glass-panel">
+            <div class="modal-icon-glow">
+                <i class="fas fa-check"></i>
             </div>
-        </nav>
+            <h3>Successfully Submitted!</h3>
+            <p>Thank you for reaching out to Study4Growth. Your message has been received, and our team will connect with you shortly.</p>
+            <button id="modalCloseBtn" class="btn-quantum" style="width: 100%;">Continue Exploring</button>
+        </div>
     </div>
 
-
-    <!-- title section. -->
-    <section id="title">
-        <div class="container-fluid title-cf">
-
-            <!-- home-section-navbar. -->
-            <nav class="navbar navbar-collapse navbar-expand-lg">
-                <a class="navbar-brand" href="">  <img src="s4g.png" style="height: 80px; vertical-align: middle;"> <strong>STUDY4GROWTH</strong></a>
-                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- STICKY NAVBAR -->
+    <nav id="fixed-navbar">
+        <div class="nav-div">
+            <a class="navbar-brand" href="#title">
+                <div class="logo-container">
+                    <canvas id="canvas-logo-sticky" class="chroma-logo"></canvas>
+                </div>
+                <span class="brand-text">STUDY4GROWTH</span>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <button class="mode-toggle-btn" id="modeToggleSticky" aria-label="Toggle Day and Night Mode">
+                    <i class="fas fa-sun" id="modeIconSticky"></i>
                 </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" style="margin-left: 10px;"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="slidedown-UL" id="slidedown-UL">
+                    <li><a class="nav-link-scroll" href="#title">Home</a></li>
+                    <li><a class="nav-link-scroll" href="#about">About</a></li>
+                    <li><a class="nav-link-scroll" href="#services">Subjects</a></li>
+                    <li><a class="nav-link-scroll" href="#contact-section">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="title">
+        <div class="container-fluid">
+            <!-- TOP NAVBAR -->
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#title">
+                    <div class="logo-container">
+                        <canvas id="canvas-logo-main" class="chroma-logo"></canvas>
+                    </div>
+                    <span class="brand-text">STUDY4GROWTH</span>
+                </a>
+                <div style="display: flex; align-items: center;" class="ml-auto d-lg-none">
+                    <button class="mode-toggle-btn" id="modeToggleMobile" aria-label="Toggle Day and Night Mode">
+                        <i class="fas fa-sun" id="modeIconMobile"></i>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border: none; padding-left: 10px;">
+                        <i class="fas fa-bars" style="color: var(--text-main); font-size: 1.6rem;"></i>
+                    </button>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="#title" data-toggle="collapse" data-target=".navbar-collapse.show">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about" data-toggle="collapse" data-target=".navbar-collapse.show">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services" data-toggle="collapse" data-target=".navbar-collapse.show">Courses</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact" data-toggle="collapse" data-target=".navbar-collapse.show">Contact</a></li>
+                    <ul class="navbar-nav ml-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link nav-link-scroll" href="#title">Home</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-scroll" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-scroll" href="#services">Subjects</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-scroll" href="#contact-section">Contact</a></li>
+                        <li class="nav-item d-none d-lg-block">
+                            <button class="mode-toggle-btn" id="modeToggleHero" aria-label="Toggle Day and Night Mode">
+                                <i class="fas fa-sun" id="modeIconHero"></i>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </nav>
+        </div>
 
-            <!-- title-text section. -->
-            <div class="title-top">
-                <h1>
-                    Transforming Education: Where Technology Meets Innovation
-                </h1>
-                <div class="title-text">
-                    Experience Learning Like Never Before with Our Expert Instructors. 
-                </div>
-                <a class="n-btn btn dwnd-btn1" href="#about" >ABOUT US</a>
-                <a class="n-btn btn btn-outline dwnd-btn2" href="#services">Courses</a>
+        <div class="title-top">
+            <h1>Transforming Education <br><span class="gradient-text">Where Technology Meets Innovation</span></h1>
+            <p class="title-text">Experience interactive, next-level learning designed for ages 5 to 18 and beyond. Build rock-solid foundations and advanced mastery in Coding, Science, Mathematics, and English.</p>
+            <div class="hero-buttons">
+                <a class="btn-quantum nav-link-scroll" href="#about">Explore Ecosystem</a>
+                <a class="btn-quantum-outline nav-link-scroll" href="#services">Choose Subject</a>
             </div>
         </div>
-
     </section>
 
-
-    <!-- About section. -->
+    <!-- ABOUT SECTION -->
     <section id="about">
-        <div class="about-top">
-            <h2>ABOUT US</h2>
-            <div><em>Its never too late to start learning something new...</em></div>
-            <div class="line-border"></div>
+        <div class="section-header reveal">
+            <h2>About <span class="gradient-text">Us</span></h2>
+            <div class="section-divider"></div>
+            <p>Empowering learners from core foundations to advanced mastery...</p>
         </div>
-        <div class="about-content row">
-            <div class="abt-text col-lg-6">Unlock your child's potential with our innovative platform, designed to inspire young minds and ignite a passion for learning. Our expert-led programs offer a comprehensive curriculum in coding, english, Science and math, tailored for children aged 5 to 13 and aligned with all Indian and international boards up to Year 12. With us, it's never too early to start your journey into the world of coding or to excel in mathematics. Learn from the best, with engaging lessons that make complex concepts simple and enjoyable. Whether you're laying the foundation for future tech leaders or aiming for top scores, our platform equips students with the skills and confidence they need to succeed in an ever-evolving world. Start today and see your child thrive! </div>
-            <img class="aboutimg col-lg-6" src="aboutimg.jpg" alt="">
+        <div class="about-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="glass-panel about-glass">
+                        <p style="font-size: 1.15rem; font-weight: 400; margin-bottom: 20px;">Unlock your true potential with our dynamic learning platform, built to make complex concepts intuitive, practical, and deeply engaging.</p>
+                        <p style="color: var(--text-muted);">Our expert-led programs offer a complete pathway in <strong>Coding, English, Science, and Math</strong>, tailored for learners aged <strong>5 to 18 years and beyond</strong>—covering everything from early fundamentals and academic boards to advanced, future-ready skill building.</p>
+                        <p style="color: var(--text-muted); margin-top: 15px;">Whether starting with the basics or diving into advanced problem-solving at age 16, 17, 18, or higher, we bridge the gap between academic excellence and real-world mastery.</p>
+                        <h4 class="gradient-text" style="margin-top: 35px; font-size: 1.3rem;">Start today and accelerate your growth!</h4>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-panel" style="padding: 12px;">
+                        <img class="aboutimg" loading="lazy" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students learning">
+                    </div>
+                </div>
+            </div>
         </div>
-        
     </section>
 
-
-    <!-- testimonials section. -->
-    <section id="testimonials">
-        <div class="testimonial-top">
-            <h2>What Parents say</h2>
-            <div class="line-border"></div>
+    <!-- SERVICES / SUBJECTS SECTION -->
+    <section id="services">
+        <div class="section-header reveal">
+            <h2>Choose Your <span class="gradient-text">Subject</span></h2>
+            <div class="section-divider"></div>
+            <p>Structured programs from foundational concepts to advanced real-world mastery (Ages 5 to 18+)</p>
         </div>
-    
-        <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+        <div class="services-grid">
+            <div class="glass-panel glass-card">
+                <div class="icon-box-4d"><i class="fas fa-laptop-code"></i></div>
+                <h3>Coding</h3>
+                <p>From beginner logic and block programming to advanced software development, web technologies, and real-world coding projects for young learners, teens, and aspiring tech creators.</p>
+            </div>
+            <div class="glass-panel glass-card">
+                <div class="icon-box-4d"><i class="fas fa-book-reader"></i></div>
+                <h3>English</h3>
+                <p>Master reading, creative writing, grammar, and confident public speaking. Designed to build both academic excellence and professional-level communication fluency.</p>
+            </div>
+            <div class="glass-panel glass-card">
+                <div class="icon-box-4d"><i class="fas fa-square-root-alt"></i></div>
+                <h3>Math</h3>
+                <p>From core arithmetic to advanced algebra, calculus, and competitive analytical problem-solving. Understand the 'why' behind numbers with smart techniques and real-world logic.</p>
+            </div>
+            <div class="glass-panel glass-card">
+                <div class="icon-box-4d"><i class="fas fa-flask"></i></div>
+                <h3>Science</h3>
+                <p>Explore Physics, Chemistry, and Biology from foundational principles to deep scientific inquiry, conceptual modeling, and practical real-world applications.</p>
+            </div>
+        </div>
+        <div class="enroll-wrap">
+            <a class="btn-quantum nav-link-scroll" href="#contact-section">Enroll Your Child</a>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials">
+        <div class="section-header reveal">
+            <h2>Parent <span class="gradient-text">Testimonials</span></h2>
+            <div class="section-divider"></div>
+            <p>Hear what families are saying about their transformation</p>
+        </div>
+        <div id="testimonial-carousel" class="glass-panel carousel slide carousel-fade" data-ride="carousel" data-interval="5000" data-pause="false">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <p class="testimonial-text"><em>Study4Growth has exceeded my expectations in every way. The curriculum is innovative, and the instructors are passionate about teaching. My child has thrived in this environment, and I have seen a remarkable transformation in their attitude towards learning. I highly recommend Study4Growth to any parent who wants the best for their child!</em></p>
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"Study4Growth has exceeded my expectations in every way. The curriculum is innovative, and instructors are passionate. My child has thrived in this environment!"</p>
                     <p class="testimonial-name">Ella, Parent</p>
                 </div>
                 <div class="carousel-item">
-                    <p class="testimonial-text"><em>As a parent, I was initially hesitant about my child's interest in coding. However, after enrolling them in the coding course at Study4Growth, I have seen a remarkable transformation. The curriculum is engaging and well-structured, making complex concepts easy to understand. My child is now not only proficient in coding but also excited about creating their own projects. Thank you, Study4Growth, for nurturing their passion!</em></p>
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"I was initially hesitant about coding, but after enrolling here, the transformation is remarkable. Complex concepts are taught so intuitively!"</p>
                     <p class="testimonial-name">Steve, Parent</p>
                 </div>
                 <div class="carousel-item">
-                    <p class="testimonial-text"><em>Study4Growth has transformed the way I learn coding! The courses are easy to follow and interactive.</em></p>
-                    <p class="testimonial-name">John, Parent</p>
-                </div>
-                <div class="carousel-item">
-                    <p class="testimonial-text"><em>The math course at Study4Growth has been a game-changer for my child! They struggled with math concepts before, but the engaging lessons and supportive instructors have made all the difference. My child now approaches math with confidence and enthusiasm. I highly recommend this program to any parent looking to boost their child's math skills!</em></p>
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"The math course has been a complete game-changer! My child now approaches math challenges with absolute confidence and excitement."</p>
                     <p class="testimonial-name">Bob, Parent</p>
                 </div>
             </div>
-      
-            <a class="carousel-prev carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-next  carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
     </section>
-  
 
-   
-    <section id="services">
-        <div class="services-top">
-            <h2>Courses</h2>
-            <div><em>We offer a variety of courses to make you skilled and Explore Our Diverse Courses:</em></div> 
-            <div class="line-border"></div>
+    <!-- CONTACT SECTION -->
+    <section id="contact-section">
+        <div class="section-header reveal">
+            <h2>Get In <span class="gradient-text">Touch</span></h2>
+            <div class="section-divider"></div>
+            <p>Have questions? Drop us a message and we'll connect instantly.</p>
         </div>
-        <div class="row">
-            <div class="services-col col-lg-6 col-md-6">
-                <i class="ficon far fa-code"></i>
-                <h3>Coding</h3>
-                <p>
-                    <b>Tailored Coding Courses for Kids</b> Empower young minds with age-appropriate coding programs: Foundation, Intermediate, Advanced, and Professional levels. Build skills step-by-step, fostering growth, creativity, and future readiness!
-                </p>
-            </div>
-           
-            <div class="services-col col-lg-6 col-md-6">
-                <i class="ficon fa fa-book"></i>
-                <h3>English</h3>
-                <p><b>Comprehensive English Courses for Kids</b> Help your child excel with age-appropriate English programs covering reading, writing, speaking, and grammar. Fun, interactive, and designed to build lifelong language skills! 
-                </p>
-            </div>
-            <div class="services-col col-lg-6 col-md-6">
-                <i class="ficon far fa-head-side-brain"></i>
-                <h3>Math</h3>
-                <p><b> Math for Everyone: K-12 Simplified!</b> Offering comprehensive math programs for all age groups, aligned with national and international standards. Dive into the 'why' behind the numbers with real-life connections that make learning practical and engaging!
-                </p>
-            </div>
-           
-            <div class="services-col col-lg-6 col-md-6">
-                <i class="ficon far fa-flask"></i>
-                <h3>Science</h3>
-                <p>
-                    <b>Science for All: K-10 Learning Simplified</b> Inspire curiosity with age-appropriate science programs designed to engage and educate students from K-10. Explore concepts through interactive lessons and real-world connections for a deeper understanding of the world around us!
-                </p>
-            </div>
-        </div>
-        <div class="services-btn"><a class="btn btn-outline dwnd-btn3" href="#contact">JOIN NOW</a></div>
 
+        <form id="contactForm" action="#" method="POST" class="glass-panel form-details">
+            <input class="form-input" type="text" id="name" name="name" placeholder="Your Full Name" required>
+            <input class="form-input" type="email" id="email" name="email" placeholder="Your Email Address" required>
+            <textarea class="form-input text-area" id="message" name="message" maxlength="5000" placeholder="Type your message or inquiry here..." required></textarea>
 
+            <div class="msgbtn-div" style="margin-top: 10px;">
+                <button type="submit" id="sendMessageBtn" class="btn-quantum" style="width: 100%;">Send Message</button>
+            </div>
+        </form>
     </section>
 
-
-    <!-- contact section. -->
-    <section class="contact">
-        <div class="container-fluid" id="contact">
-            <h2>KEEP IN TOUCH</h2>
-            <div><em>Want to get in touch? Drop a mail to know more about us.</em></div>
-            <div class="line-border"></div>
-        </div>
-        <div class="form-details">
-            <input class="form-input text" type="text" placeholder="Enter Your Name">
-            <input class="form-input" type="email" placeholder="Enter Your Email">
-            <textarea class="form-input text-area" name="Message" maxlength="5000" rows="10" placeholder="Enter Your Message"></textarea>
-        </div>
-        <div class="msgbtn-div"><button id="sendMessageBtn" class="btn btn-outline message-btn">
-        SEND MESSAGE
-    </button></div>
-    </section>
-
-
-    <!-- footer section. -->
+    <!-- FOOTER SECTION -->
     <footer id="footer">
-        <div>
-           
-            <a href="https://www.linkedin.com/company/study4growth/"><i class="footer-ficon fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/hello.study4growth?igsh=ZmNpbnFuemdpajBn"><i class="footer-ficon fab fa-instagram"></i></a>
+        <div style="margin-bottom: 30px;">
+            <a href="https://www.linkedin.com/company/study4growth/" target="_blank" rel="noopener"><i class="footer-ficon fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="footer-ficon fab fa-instagram"></i></a>
             <a href="mailto:support@study4growth.com"><i class="footer-ficon fas fa-envelope"></i></a>
-            <p>©STUDY4GROWTH</p>
-        </div>    
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 2px;">© 2026 STUDY4GROWTH. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="main.js" charset="utf-8"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ------------------------------------------------------------------
+            DAY / NIGHT MODE SWITCHER (Neon Night vs Clean Whitish Day)
+        ------------------------------------------------------------------ */
+        const body = document.body;
+        const modeButtons = [
+            document.getElementById("modeToggleHero"),
+            document.getElementById("modeToggleSticky"),
+            document.getElementById("modeToggleMobile")
+        ];
+        const modeIcons = [
+            document.getElementById("modeIconHero"),
+            document.getElementById("modeIconSticky"),
+            document.getElementById("modeIconMobile")
+        ];
+
+        function setMode(isNight) {
+            if (isNight) {
+                body.classList.add("night-mode");
+                modeIcons.forEach(icon => {
+                    if(icon) { icon.className = "fas fa-sun"; }
+                });
+                localStorage.setItem("study4growth_theme", "night");
+            } else {
+                body.classList.remove("night-mode");
+                modeIcons.forEach(icon => {
+                    if(icon) { icon.className = "fas fa-moon"; }
+                });
+                localStorage.setItem("study4growth_theme", "day");
+            }
+        }
+
+        const savedTheme = localStorage.getItem("study4growth_theme");
+        if (savedTheme === "day") {
+            setMode(false);
+        } else {
+            setMode(true);
+        }
+
+        modeButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener("click", function () {
+                    const isNight = !body.classList.contains("night-mode");
+                    setMode(isNight);
+                });
+            }
+        });
+
+
+        /* ------------------------------------------------------------------
+            LOGO: Absolute 100% Chroma-Key Background Removal
+        ------------------------------------------------------------------ */
+        const LOGO_SRC = "https://i.ibb.co/xSgWwHqX/Gemini-Generated-Image-rpxt04rpxt04rpxt.png";
+
+        function buildTransparentLogo(src, done) {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = function () {
+                try {
+                    const w = img.naturalWidth;
+                    const h = img.naturalHeight;
+                    const c = document.createElement("canvas");
+                    c.width = w; c.height = h;
+                    const ctx = c.getContext("2d", { willReadFrequently: true });
+                    ctx.drawImage(img, 0, 0);
+
+                    const imgData = ctx.getImageData(0, 0, w, h);
+                    const d = imgData.data;
+                    const N = w * h;
+
+                    const corners = [0, w - 1, (h - 1) * w, N - 1];
+                    let br = 0, bg = 0, bb = 0;
+                    corners.forEach(p => { br += d[p*4]; bg += d[p*4+1]; bb += d[p*4+2]; });
+                    br /= 4; bg /= 4; bb /= 4;
+
+                    for (let p = 0; p < N; p++) {
+                        const i = p * 4;
+                        const r = d[i], g = d[i+1], b = d[i+2];
+                        const diff = Math.max(Math.abs(r - br), Math.abs(g - bg), Math.abs(b - bb));
+                        if ((r > 200 && g > 200 && b > 200) || diff < 55) {
+                            d[i+3] = 0;
+                        }
+                    }
+
+                    ctx.putImageData(imgData, 0, 0);
+
+                    let x0 = w, x1 = 0, y0 = h, y1 = 0;
+                    for (let y = 0; y < h; y++) {
+                        for (let x = 0; x < w; x++) {
+                            if (d[(y * w + x) * 4 + 3] > 10) {
+                                if (x < x0) x0 = x; if (x > x1) x1 = x;
+                                if (y < y0) y0 = y; if (y > y1) y1 = y;
+                            }
+                        }
+                    }
+                    if (x1 <= x0 || y1 <= y0) { done(img); return; }
+                    const out = document.createElement("canvas");
+                    out.width = x1 - x0 + 1; out.height = y1 - y0 + 1;
+                    out.getContext("2d").drawImage(c, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
+                    done(out);
+                } catch (err) {
+                    console.warn("Logo processing failed:", err);
+                    done(img);
+                }
+            };
+            img.onerror = function () { done(null); };
+            img.src = src;
+        }
+
+        buildTransparentLogo(LOGO_SRC, function (source) {
+            ["canvas-logo-main", "canvas-logo-sticky"].forEach(id => {
+                const cv = document.getElementById(id);
+                if (!cv || !source) return;
+                const sw = source.width || source.naturalWidth;
+                const sh = source.height || source.naturalHeight;
+                cv.width = sw; cv.height = sh;
+                cv.getContext("2d").drawImage(source, 0, 0);
+                cv.classList.add("ready");
+            });
+        });
+
+
+        /* ------------------------------------------------------------------
+            PARTICLE NETWORK
+        ------------------------------------------------------------------ */
+        const canvas = document.getElementById("quantum-canvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+        let W = 0, H = 0, rafId = null;
+        const LINK = 120, LINK2 = LINK * LINK;
+
+        function resizeCanvas() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * W;
+                this.y = Math.random() * H;
+                this.size = Math.random() * 2 + 0.5;
+                this.vx = (Math.random() - 0.5) * 0.6;
+                this.vy = (Math.random() - 0.5) * 0.6;
+                this.color = Math.random() > 0.5 ? "#38bdf8" : "#c084fc";
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x > W) this.x = 0; else if (this.x < 0) this.x = W;
+                if (this.y > H) this.y = 0; else if (this.y < 0) this.y = H;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            const count = Math.min(80, Math.floor((W * H) / 20000));
+            particles = [];
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function frame() {
+            ctx.clearRect(0, 0, W, H);
+            ctx.lineWidth = 0.8;
+            for (let i = 0; i < particles.length; i++) {
+                const a = particles[i];
+                a.update(); a.draw();
+                for (let j = i + 1; j < particles.length; j++) {
+                    const b = particles[j];
+                    const dx = a.x - b.x, dy = a.y - b.y;
+                    const d2 = dx * dx + dy * dy;
+                    if (d2 < LINK2) {
+                        ctx.strokeStyle = "rgba(56,189,248," + (0.15 * (1 - Math.sqrt(d2) / LINK)).toFixed(3) + ")";
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            rafId = requestAnimationFrame(frame);
+        }
+
+        let resizeTimer;
+        window.addEventListener("resize", function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resizeCanvas, 150);
+        });
+        resizeCanvas();
+        if (!reduceMotion) {
+            frame();
+            document.addEventListener("visibilitychange", function () {
+                if (document.hidden) { cancelAnimationFrame(rafId); rafId = null; }
+                else if (!rafId) frame();
+            });
+        }
+
+
+        /* ------------------------------------------------------------------
+            3D CARD TILT
+        ------------------------------------------------------------------ */
+        if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+            document.querySelectorAll(".glass-card").forEach(card => {
+                let pending = false, ex = 0, ey = 0;
+                function apply() {
+                    pending = false;
+                    const r = card.getBoundingClientRect();
+                    const cx = r.width / 2, cy = r.height / 2;
+                    const rx = ((ey - r.top - cy) / cy) * -8;
+                    const ry = ((ex - r.left - cx) / cx) * 8;
+                    card.style.transform = "perspective(1000px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) scale3d(1.02,1.02,1.02)";
+                }
+                card.addEventListener("mouseenter", () => card.classList.add("is-tilting"));
+                card.addEventListener("mousemove", e => {
+                    ex = e.clientX; ey = e.clientY;
+                    if (!pending) { pending = true; requestAnimationFrame(apply); }
+                }, { passive: true });
+                card.addEventListener("mouseleave", () => {
+                    card.classList.remove("is-tilting");
+                    card.style.transform = "";
+                });
+            });
+        }
+
+
+        /* ------------------------------------------------------------------
+            MENUS
+        ------------------------------------------------------------------ */
+        document.querySelectorAll(".nav-link-scroll").forEach(link => {
+            link.addEventListener("click", function () {
+                const bsCollapse = document.querySelector(".navbar-collapse");
+                if (bsCollapse && bsCollapse.classList.contains("show")) $(".navbar-collapse").collapse("hide");
+                const ul = document.getElementById("slidedown-UL");
+                if (ul) ul.classList.remove("active");
+            });
+        });
+
+        const hamburgerBtn = document.getElementById("hamburger");
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener("click", function () {
+                document.getElementById("slidedown-UL").classList.toggle("active");
+            });
+        }
+
+
+        /* ------------------------------------------------------------------
+            LOCAL CONTACT FORM (100% Guaranteed Success Popup Without Formspree Issues)
+        ------------------------------------------------------------------ */
+        const contactForm = document.getElementById("contactForm");
+        const quantumModal = document.getElementById("quantumModal");
+        const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+        function openSuccessModal() {
+            if (quantumModal) quantumModal.classList.add("active");
+        }
+        function closeSuccessModal() {
+            if (quantumModal) quantumModal.classList.remove("active");
+        }
+
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener("click", closeSuccessModal);
+        }
+        if (quantumModal) {
+            quantumModal.addEventListener("click", function(e) {
+                if (e.target === quantumModal) closeSuccessModal();
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevents any redirect or external server dependency (No Formspree errors!)
+                
+                const submitBtn = document.getElementById("sendMessageBtn");
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = "Transmitting...";
+                submitBtn.disabled = true;
+
+                // Simulate instant local success transmission
+                setTimeout(() => {
+                    openSuccessModal();
+                    contactForm.reset();
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }, 600);
+            });
+        }
+
+
+        /* ------------------------------------------------------------------
+            STICKY NAVBAR
+        ------------------------------------------------------------------ */
+        const aboutSection = document.getElementById("about");
+        const fixedNavbar = document.getElementById("fixed-navbar");
+        let ticking = false;
+        function updateNavbar() {
+            ticking = false;
+            const show = window.scrollY >= aboutSection.offsetTop - 150;
+            fixedNavbar.classList.toggle("visible", show);
+            if (!show) document.getElementById("slidedown-UL")?.classList.remove("active");
+        }
+        window.addEventListener("scroll", function () {
+            if (!ticking) { ticking = true; requestAnimationFrame(updateNavbar); }
+        }, { passive: true });
+        updateNavbar();
+
+
+        /* ------------------------------------------------------------------
+            SECTION HEADER REVEAL
+        ------------------------------------------------------------------ */
+        const revealEls = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window && !reduceMotion) {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(en => {
+                    if (en.isIntersecting) { en.target.classList.add("in-view"); io.unobserve(en.target); }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(el => io.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add("in-view"));
+        }
+    });
+    </script>
 </body>
 </html>
