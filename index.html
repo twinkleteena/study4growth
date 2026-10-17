@@ -943,7 +943,7 @@ const modalCloseBtn = document.getElementById("modalCloseBtn");
 const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbyC7zFv3pAp_VYy8vsP91vpgWC8ORsYEic7Otqi-j24ZiA-ycqVxvVzyKphounzJxYW/exec";
 
-        
+ /*       
 const phoneInput = document.getElementById("phone");
 
 const iti = window.intlTelInput(phoneInput, {
@@ -951,7 +951,7 @@ const iti = window.intlTelInput(phoneInput, {
     separateDialCode: true,
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.3/build/js/utils.js"
 });
-
+*/
 function openSuccessModal() {
     if (quantumModal) {
         quantumModal.classList.add("active");
@@ -1002,7 +1002,7 @@ if (contactForm) {
 
         formData.append("name", name);
         formData.append("email", email);
-        formData.append("phone", iti.getNumber());
+        formData.append("phone", window.iti.getNumber());
         formData.append("message", message);
 
 
@@ -1128,6 +1128,18 @@ if (contactForm) {
         }
     });
     </script>
+   
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.3/build/js/intlTelInput.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const phoneInput = document.getElementById("phone");
+
+    window.iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.3/build/js/utils.js"
+    });
+});
+</script>
 </body>
 </html>
