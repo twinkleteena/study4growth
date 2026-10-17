@@ -653,6 +653,7 @@
         <form id="contactForm" action="#" method="POST" class="glass-panel form-details">
             <input class="form-input" type="text" id="name" name="name" placeholder="Your Full Name" required>
             <input class="form-input" type="email" id="email" name="email" placeholder="Your Email Address" required>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
             <textarea class="form-input text-area" id="message" name="message" maxlength="5000" placeholder="Type your message or inquiry here..." required></textarea>
 
             <div class="msgbtn-div" style="margin-top: 10px;">
@@ -990,6 +991,7 @@ if (contactForm) {
 
         formData.append("name", name);
         formData.append("email", email);
+        formData.append("phone", document.getElementById("phone").value.trim());
         formData.append("message", message);
 
 
